@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fee & Payments | NIYD Hostel Student Portal</title>
+  
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/student.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+
+  <style>
+    @media print {
+      .student-navbar, .btn, .no-print {
+        display: none !important;
+      }
+      .printable-receipt {
+        border: none !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <header class="student-navbar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; height: 68px;">
+      <a href="index.html" class="brand-logo" style="gap: var(--space-2);">
+        <div class="brand-emblem" style="width: 38px; height: 38px; font-size: 0.9rem;">NIYD</div>
+        <div>
+          <span style="font-weight: 700; color: var(--color-navy); font-size: 0.95rem;">Student Residential Portal</span>
+          <div style="font-size: 0.7rem; color: var(--color-text-secondary);" id="topStudentId">Loading...</div>
+        </div>
+      </a>
+
+      <div style="display: flex; align-items: center; gap: var(--space-4);">
+        <span style="font-size: var(--font-size-sm); font-weight: 600; color: var(--color-navy);" id="topStudentName">Student</span>
+        <button type="button" class="btn btn-outline btn-sm" onclick="Auth.logout()">Sign Out</button>
+      </div>
+    </div>
+
+    <!-- Navigation Menu Bar -->
+    <div style="background: #F8FAFC; border-top: 1px solid var(--color-border-light);">
+      <div class="container student-nav-menu">
+        <a href="index.html" class="student-nav-link">
+          <span>🏠</span> Dashboard
+        </a>
+        <a href="room.html" class="student-nav-link">
+          <span>🛏️</span> My Room
+        </a>
+        <a href="fees.html" class="student-nav-link active">
+          <span>💳</span> Fees & Invoices
+        </a>
+        <a href="maintenance.html" class="student-nav-link">
+          <span>🔧</span> Maintenance Requests
+        </a>
+        <a href="rules.html" class="student-nav-link">
+          <span>📜</span> Hostel Rules
+        </a>
+        <a href="announcements.html" class="student-nav-link">
+          <span>📢</span> Notices
+        </a>
+        <a href="contact.html" class="student-nav-link">
+          <span>📞</span> Contact Warden
+        </a>
+        <a href="profile.html" class="student-nav-link">
+          <span>👤</span> Profile
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: var(--space-8); padding-bottom: var(--space-12);">
+
+    <!-- Financial Status Card -->
+    <div class="card" style="margin-bottom: var(--space-8);">
+      <div class="card-body" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4);">
+        <div>
+          <span style="font-size: 0.75rem; color: var(--color-text-secondary); text-transform: uppercase;">Total Outstanding Hostel Dues</span>
+          <div style="font-size: 2rem; font-weight: 800; color: var(--color-navy);" id="studentTotalDue">—</div>
+          <span style="font-size: 0.75rem; color: var(--color-text-muted);" id="dueSubtext">Checking billing records...</span>
+        </div>
+
+        <div style="background: var(--color-primary-50); border: 1px solid var(--color-primary-100); border-radius: var(--radius-lg); padding: var(--space-4); max-width: 480px; font-size: var(--font-size-xs);">
+          <strong style="color: var(--color-primary-dark);">Notice regarding digital payments:</strong><br>
+          For demonstration and development evaluation, payments can be simulated via bKash or Nagad. Payments immediately update your billing records and issue downloadable official money receipts.
+        </div>
+      </div>
+    </div>
+
+    <!-- My Invoices List Card -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Billing Invoices & Payment History</h3>
+      </div>
+      <div class="table-responsive" style="border: none;">
+        <table class="table" id="studentInvoicesTable">
+          <thead>
+            <tr>
+              <th>Invoice No.</th>
+              <th>Due Date</th>
+              <th>Total Billed</th>
+              <th>Paid Amount</th>
+              <th>Balance Due</th>
+              <th>Status</th>
+              <th style="text-align: right;">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="7" style="text-align: center; padding: 2rem;"><span class="spinner"></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal: Payment Simulation (bKash / Nagad) -->
+  <div class="modal-backdrop" id="paymentSimModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Hostel Fee Payment Simulation</h3>
+        <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
+      </div>
+      <form id="paymentSimForm">
+        <div class="modal-body">
+          <input type="hidden" id="simInvoiceId">
+
+          <div style="background: var(--color-bg); padding: var(--space-4); border-radius: var(--radius-md); margin-bottom: var(--space-4);">
+            <div style="display: flex; justify-content: space-between; font-size: var(--font-size-sm); margin-bottom: 4px;">
+              <span>Invoice:</span> <strong id="simInvoiceNum">—</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: var(--font-size-sm);">
+              <span>Payable Amount:</span> <strong style="color: var(--color-primary); font-size: 1.1rem;" id="simPayableAmount">৳0</strong>
+            </div>
+          </div>
+
+          <label class="form-label">Select Payment Gateway</label>
+          <div class="gateway-selection-box">
+            <div class="gateway-option selected" data-gateway="bkash" onclick="selectGateway('bkash')">
+              <strong style="color: #E2136E; font-size: 1.1rem;">bKash</strong>
+              <span style="font-size: 0.7rem; color: var(--color-text-secondary);">Direct Merchant</span>
+            </div>
+            <div class="gateway-option" data-gateway="nagad" onclick="selectGateway('nagad')">
+              <strong style="color: #F7941D; font-size: 1.1rem;">Nagad</strong>
+              <span style="font-size: 0.7rem; color: var(--color-text-secondary);">Digital Wallet</span>
+            </div>
+          </div>
+          <input type="hidden" id="selectedGateway" value="bkash">
+
+          <div class="form-group">
+            <label class="form-label">Account Mobile Number</label>
+            <input type="tel" id="simPhone" class="form-control" value="01712345678" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Mock Wallet PIN</label>
+            <input type="password" id="simPin" class="form-control" value="12345" required maxlength="5">
+            <span class="form-hint">Development simulation: enter any 5-digit PIN</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="simSubmitBtn">Confirm Simulated Payment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Official Money Receipt View & Print -->
+  <div class="modal-backdrop" id="receiptModal">
+    <div class="modal-dialog modal-dialog-lg">
+      <div class="modal-header no-print">
+        <h3 class="modal-title">Official Money Receipt</h3>
+        <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body printable-receipt" id="receiptContent">
+        <!-- Rendered dynamically -->
+      </div>
+      <div class="modal-footer no-print">
+        <button type="button" class="btn btn-outline" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="window.print()">Print Official Receipt</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="../assets/js/i18n.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/student/fees.js"></script>
+</body>
+</html>

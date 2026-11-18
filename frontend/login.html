@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In & Admissions | NIYD Hostel Management System</title>
+  <meta name="description" content="Secure authentication portal for NIYD students, wardens, and staff.">
+  
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <style>
+    .auth-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, #EFF4F9 0%, #E2EBF1 100%);
+    }
+
+    .auth-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-8) var(--space-4);
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 520px;
+      background: var(--color-surface);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+    }
+
+    .auth-card.wide {
+      max-width: 760px;
+    }
+
+    .auth-header {
+      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-dark) 100%);
+      color: #FFFFFF;
+      padding: var(--space-8) var(--space-8) var(--space-6);
+      text-align: center;
+      border-bottom: 3px solid var(--color-gold);
+    }
+
+    .auth-tabs {
+      display: flex;
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .auth-tab-btn {
+      flex: 1;
+      padding: var(--space-3) var(--space-2);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-secondary);
+      border-bottom: 2px solid transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-1);
+      transition: all var(--transition-fast);
+      text-align: center;
+    }
+
+    .auth-tab-btn.active {
+      color: var(--color-primary);
+      background-color: var(--color-surface);
+      border-bottom-color: var(--color-primary);
+    }
+
+    .auth-body {
+      padding: var(--space-8);
+    }
+
+    .demo-creds-box {
+      background-color: var(--color-primary-50);
+      border: 1px solid var(--color-primary-100);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      margin-bottom: var(--space-6);
+      font-size: var(--font-size-xs);
+    }
+
+    .demo-creds-title {
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary-dark);
+      margin-bottom: var(--space-2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .demo-pill-btn {
+      background: #FFFFFF;
+      border: 1px solid var(--color-primary);
+      color: var(--color-primary);
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.7rem;
+      font-weight: var(--font-weight-semibold);
+      cursor: pointer;
+    }
+
+    .demo-pill-btn:hover {
+      background: var(--color-primary);
+      color: #FFFFFF;
+    }
+  </style>
+</head>
+<body class="auth-page">
+
+  <!-- Top bar with Back to Home and Language Toggle -->
+  <header style="background: var(--color-surface); border-bottom: 1px solid var(--color-border); padding: var(--space-3) 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" class="brand-logo" style="gap: var(--space-2);">
+        <div class="brand-emblem" style="width: 36px; height: 36px; font-size: 0.9rem;">NIYD</div>
+        <span style="font-weight: var(--font-weight-bold); color: var(--color-navy); font-size: 0.95rem;">Hostel Management System</span>
+      </a>
+
+      <div style="display: flex; align-items: center; gap: var(--space-4);">
+        <a href="index.html" class="btn btn-outline btn-sm">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Back to Home
+        </a>
+        <div class="lang-switcher">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="bn">বাংলা</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="auth-container">
+    <div class="auth-card" id="authCard">
+      <!-- Card Header -->
+      <div class="auth-header">
+        <h2 style="color: #FFFFFF; font-size: 1.4rem; margin-bottom: 4px;" id="authCardTitle">Sign In to Your Account</h2>
+        <p style="color: #B5C4D3; font-size: var(--font-size-xs); margin: 0;" id="authCardSub">
+          National Institute of Youth Development, Bangladesh
+        </p>
+      </div>
+
+      <!-- Role / Action Navigation Tabs -->
+      <div class="auth-tabs" role="tablist">
+        <button type="button" class="auth-tab-btn active" data-tab="student">
+          <span>🎓</span> Student
+        </button>
+        <button type="button" class="auth-tab-btn" data-tab="admin">
+          <span>🔑</span> Warden / Admin
+        </button>
+        <button type="button" class="auth-tab-btn" data-tab="staff">
+          <span>🔧</span> Staff
+        </button>
+        <button type="button" class="auth-tab-btn" data-tab="apply">
+          <span>📝</span> New Admission
+        </button>
+      </div>
+
+      <!-- Card Body: Login Form -->
+      <div class="auth-body">
+
+        <!-- Demo Accounts Quick-Select Ribbon -->
+        <div class="demo-creds-box" id="demoBox">
+          <div class="demo-creds-title">
+            <span>⚡ Quick Demo Credentials</span>
+            <span style="font-size: 0.68rem; color: var(--color-text-muted);">Click to auto-fill</span>
+          </div>
+          <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
+            <button type="button" class="demo-pill-btn" onclick="fillCredentials('student')">Student (Tanvir)</button>
+            <button type="button" class="demo-pill-btn" onclick="fillCredentials('admin')">Super Admin</button>
+            <button type="button" class="demo-pill-btn" onclick="fillCredentials('warden')">Hostel Warden</button>
+            <button type="button" class="demo-pill-btn" onclick="fillCredentials('staff')">Staff (Maintenance)</button>
+          </div>
+        </div>
+
+        <!-- 1. Standard Login Form (Student, Admin, Staff) -->
+        <form id="loginForm" autocomplete="on">
+          <input type="hidden" id="loginRole" value="student">
+
+          <div class="form-group">
+            <label class="form-label" for="loginEmail">
+              <span id="loginEmailLabel">Student Email or ID</span>
+              <span class="required">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="loginEmail" 
+              class="form-control" 
+              placeholder="e.g. student1@niyd.gov.bd" 
+              required
+              autocomplete="username"
+            >
+            <div class="form-error" id="emailError"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="loginPassword">
+              <span>Password</span>
+              <span class="required">*</span>
+            </label>
+            <div style="position: relative;">
+              <input 
+                type="password" 
+                id="loginPassword" 
+                class="form-control" 
+                placeholder="••••••••" 
+                required
+                autocomplete="current-password"
+                style="padding-right: 2.5rem;"
+              >
+              <button 
+                type="button" 
+                id="togglePassword" 
+                aria-label="Toggle password visibility"
+                style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); color: var(--color-text-muted); padding: 4px;"
+              >
+                👁️
+              </button>
+            </div>
+            <div class="form-error" id="passwordError"></div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6); font-size: var(--font-size-xs);">
+            <label style="display: flex; align-items: center; gap: var(--space-2); cursor: pointer; color: var(--color-text-secondary);">
+              <input type="checkbox" id="rememberMe"> Remember this device
+            </label>
+            <a href="javascript:void(0)" onclick="UI.showToast('Please contact the Chief Warden office for password reset.', 'info')" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">
+              Forgot password?
+            </a>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitLoginBtn">
+            Sign In to Portal
+          </button>
+        </form>
+
+        <!-- 2. Admission Application Form (Tab: apply) -->
+        <form id="admissionForm" style="display: none;">
+          <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--space-5);">
+            Please fill out your official information accurately. All applications are reviewed by the NIYD Warden Committee.
+          </p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+            <div class="form-group">
+              <label class="form-label">First Name <span class="required">*</span></label>
+              <input type="text" id="appFirstName" class="form-control" required placeholder="e.g. Tanvir">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name <span class="required">*</span></label>
+              <input type="text" id="appLastName" class="form-control" required placeholder="e.g. Ahmed">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+            <div class="form-group">
+              <label class="form-label">Email Address <span class="required">*</span></label>
+              <input type="email" id="appEmail" class="form-control" required placeholder="tanvir@example.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Contact Phone <span class="required">*</span></label>
+              <input type="tel" id="appPhone" class="form-control" required placeholder="017xxxxxxxx">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-3);">
+            <div class="form-group">
+              <label class="form-label">Department <span class="required">*</span></label>
+              <select id="appDepartment" class="form-control" required>
+                <option value="">Select Dept</option>
+                <option value="Youth Leadership & Governance">Youth Leadership</option>
+                <option value="Information & Communication Technology">ICT & Software</option>
+                <option value="Entrepreneurship & Small Enterprise">Entrepreneurship</option>
+                <option value="Community Development & Social Work">Community Dev</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Session <span class="required">*</span></label>
+              <input type="text" id="appSession" class="form-control" value="2026-2027" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Gender <span class="required">*</span></label>
+              <select id="appGender" class="form-control" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+            <div class="form-group">
+              <label class="form-label">Room Preference <span class="required">*</span></label>
+              <select id="appRoomType" class="form-control" required>
+                <option value="double">Double Occupancy (2 Beds)</option>
+                <option value="triple">Triple Occupancy (3 Beds)</option>
+                <option value="single">Single Room (Merit / Special)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">National ID / Birth Cert No. <span class="required">*</span></label>
+              <input type="text" id="appNid" class="form-control" required placeholder="NID Number">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Permanent Home Address <span class="required">*</span></label>
+            <input type="text" id="appAddress" class="form-control" required placeholder="Village/Area, Upazila, District">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+            <div class="form-group">
+              <label class="form-label">Emergency Contact Name <span class="required">*</span></label>
+              <input type="text" id="appEmergencyName" class="form-control" required placeholder="Guardian Name">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Emergency Phone <span class="required">*</span></label>
+              <input type="tel" id="appEmergencyPhone" class="form-control" required placeholder="018xxxxxxxx">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-gold btn-block btn-lg" id="submitAppBtn" style="margin-top: var(--space-4);">
+            Submit Hostel Admission Application
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </main>
+
+  <footer style="text-align: center; padding: var(--space-6); font-size: var(--font-size-xs); color: var(--color-text-secondary); border-top: 1px solid var(--color-border);">
+    National Institute of Youth Development, Savar, Dhaka, Bangladesh • Residential HMS Portal
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/login.js"></script>
+</body>
+</html>

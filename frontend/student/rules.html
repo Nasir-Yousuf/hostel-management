@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel Rules & Regulations | NIYD Hostel Student Portal</title>
+  
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/student.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+  <header class="student-navbar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; height: 68px;">
+      <a href="index.html" class="brand-logo" style="gap: var(--space-2);">
+        <div class="brand-emblem" style="width: 38px; height: 38px; font-size: 0.9rem;">NIYD</div>
+        <div>
+          <span style="font-weight: 700; color: var(--color-navy); font-size: 0.95rem;">Student Residential Portal</span>
+        </div>
+      </a>
+      <button type="button" class="btn btn-outline btn-sm" onclick="Auth.logout()">Sign Out</button>
+    </div>
+
+    <div style="background: #F8FAFC; border-top: 1px solid var(--color-border-light);">
+      <div class="container student-nav-menu">
+        <a href="index.html" class="student-nav-link"><span>🏠</span> Dashboard</a>
+        <a href="room.html" class="student-nav-link"><span>🛏️</span> My Room</a>
+        <a href="fees.html" class="student-nav-link"><span>💳</span> Fees & Invoices</a>
+        <a href="maintenance.html" class="student-nav-link"><span>🔧</span> Maintenance Requests</a>
+        <a href="rules.html" class="student-nav-link active"><span>📜</span> Hostel Rules</a>
+        <a href="announcements.html" class="student-nav-link"><span>📢</span> Notices</a>
+        <a href="contact.html" class="student-nav-link"><span>📞</span> Contact Warden</a>
+        <a href="profile.html" class="student-nav-link"><span>👤</span> Profile</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: var(--space-8); padding-bottom: var(--space-12); max-width: 860px;">
+    <div class="card" style="margin-bottom: var(--space-6);">
+      <div class="card-header">
+        <h2 class="card-title">NIYD Residential Code of Conduct & Rules</h2>
+        <span class="badge badge-gold">Official Policy</span>
+      </div>
+      <div class="card-body" style="font-size: var(--font-size-sm); line-height: 1.7;">
+        <h4 style="color: var(--color-navy); margin: 0 0 8px;">1. Gate Entry & Curfew Schedule</h4>
+        <p>• Hostel gates are unlocked at <strong>06:00 AM</strong> and strictly secured at <strong>09:30 PM</strong> daily.<br>
+           • Any student arriving after 09:30 PM must register in the Late Entry Book and provide written justification. Chronic late returns incur disciplinary fines.</p>
+
+        <h4 style="color: var(--color-navy); margin: 16px 0 8px;">2. Visitor & Guardian Policy</h4>
+        <p>• External visitors and family guardians may be received solely in the ground floor visitor lounge between <strong>04:00 PM and 07:00 PM</strong>.<br>
+           • No outside visitors or non-resident guests are permitted in residential student rooms at any hour.</p>
+
+        <h4 style="color: var(--color-navy); margin: 16px 0 8px;">3. Electrical Appliance & Safety Guidelines</h4>
+        <p>• High-wattage heating coils, electric stoves, and unauthorized room heaters are strictly prohibited due to fire hazards.<br>
+           • Study tables are equipped with authorized power sockets for laptops and phone chargers.</p>
+
+        <h4 style="color: var(--color-navy); margin: 16px 0 8px;">4. Maintenance & Property Care</h4>
+        <p>• Residents are held jointly responsible for room fixtures, study desks, and sanitary fittings.<br>
+           • Any accidental or structural damage must be promptly logged via the portal's Maintenance Request system.</p>
+
+        <h4 style="color: var(--color-navy); margin: 16px 0 8px;">5. Disciplinary Actions</h4>
+        <p>• Smoking, narcotics, alcohol, weapons, or harassment of fellow students will result in immediate termination of hostel accommodation and referral to the Academic Disciplinary Board.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maintenance Requests | NIYD Hostel Student Portal</title>
+  
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/student.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- Top bar -->
+  <header class="student-navbar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; height: 68px;">
+      <a href="index.html" class="brand-logo" style="gap: var(--space-2);">
+        <div class="brand-emblem" style="width: 38px; height: 38px; font-size: 0.9rem;">NIYD</div>
+        <div>
+          <span style="font-weight: 700; color: var(--color-navy); font-size: 0.95rem;">Student Residential Portal</span>
+          <div style="font-size: 0.7rem; color: var(--color-text-secondary);" id="topStudentId">Loading...</div>
+        </div>
+      </a>
+
+      <div style="display: flex; align-items: center; gap: var(--space-4);">
+        <span style="font-size: var(--font-size-sm); font-weight: 600; color: var(--color-navy);" id="topStudentName">Student</span>
+        <button type="button" class="btn btn-outline btn-sm" onclick="Auth.logout()">Sign Out</button>
+      </div>
+    </div>
+
+    <!-- Navigation Menu Bar -->
+    <div style="background: #F8FAFC; border-top: 1px solid var(--color-border-light);">
+      <div class="container student-nav-menu">
+        <a href="index.html" class="student-nav-link">
+          <span>🏠</span> Dashboard
+        </a>
+        <a href="room.html" class="student-nav-link">
+          <span>🛏️</span> My Room
+        </a>
+        <a href="fees.html" class="student-nav-link">
+          <span>💳</span> Fees & Invoices
+        </a>
+        <a href="maintenance.html" class="student-nav-link active">
+          <span>🔧</span> Maintenance Requests
+        </a>
+        <a href="rules.html" class="student-nav-link">
+          <span>📜</span> Hostel Rules
+        </a>
+        <a href="announcements.html" class="student-nav-link">
+          <span>📢</span> Notices
+        </a>
+        <a href="contact.html" class="student-nav-link">
+          <span>📞</span> Contact Warden
+        </a>
+        <a href="profile.html" class="student-nav-link">
+          <span>👤</span> Profile
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: var(--space-8); padding-bottom: var(--space-12);">
+
+    <!-- New Request Card -->
+    <div class="card" style="margin-bottom: var(--space-8); max-width: 800px;">
+      <div class="card-header">
+        <h3 class="card-title">Submit Room Maintenance or Repair Complaint</h3>
+      </div>
+      <form id="studentMaintenanceForm">
+        <div class="card-body">
+          <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--space-5);">
+            Hostel maintenance staff inspects and services complaints according to urgency. Your allocated room information will be automatically attached to this request.
+          </p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+            <div class="form-group">
+              <label class="form-label">Issue Category <span class="required">*</span></label>
+              <select id="maintCategory" class="form-control" required>
+                <option value="plumbing">Plumbing / Water Tap / Washroom</option>
+                <option value="electrical">Electrical / Fan / Lights / Switches</option>
+                <option value="cleaning">Room & Hallway Cleaning</option>
+                <option value="furniture">Furniture / Bed / Study Table Lock</option>
+                <option value="internet_wifi">Wi-Fi & Internet Connectivity</option>
+                <option value="other">Other General Repair</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Priority Level <span class="required">*</span></label>
+              <select id="maintPriority" class="form-control" required>
+                <option value="medium" selected>Medium (Standard Service)</option>
+                <option value="urgent">Urgent (Immediate Safety / Heavy Leak)</option>
+                <option value="high">High (Affecting Study/Sleep)</option>
+                <option value="low">Low (Cosmetic / Minor)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Problem Summary Title <span class="required">*</span></label>
+            <input type="text" id="maintTitle" class="form-control" placeholder="e.g. Washroom water tap leaking continuously" required minlength="5">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Detailed Description of Defect <span class="required">*</span></label>
+            <textarea id="maintDescription" class="form-control" rows="3" placeholder="Please explain the issue and when the technician may inspect..." required minlength="10"></textarea>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary" id="submitMaintBtn">Submit Request</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- My Complaints History -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">My Maintenance Request History</h3>
+        <button type="button" class="btn btn-outline-primary btn-sm" onclick="loadMyMaintenance()">Refresh</button>
+      </div>
+      <div class="table-responsive" style="border: none;">
+        <table class="table" id="myMaintenanceTable">
+          <thead>
+            <tr>
+              <th>Req No.</th>
+              <th>Category</th>
+              <th>Title & Description</th>
+              <th>Priority</th>
+              <th>Assigned Technician</th>
+              <th>Status</th>
+              <th>Submitted Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="7" style="text-align: center; padding: 2rem;"><span class="spinner"></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="../assets/js/i18n.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/student/maintenance.js"></script>
+</body>
+</html>

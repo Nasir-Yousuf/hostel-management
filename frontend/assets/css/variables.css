@@ -1,0 +1,134 @@
+/**
+ * NIYD Hostel Management System
+ * Design System Tokens & CSS Variables
+ * Organization: National Institute of Youth Development (NIYD), Bangladesh
+ */
+
+:root {
+  /* Institutional Color Palette */
+  --color-primary: #146B45;          /* Institutional Forest Green */
+  --color-primary-light: #1A8A59;
+  --color-primary-dark: #0E4E32;
+  --color-primary-50: #EDF7F2;
+  --color-primary-100: #D0ECDD;
+  --color-primary-rgb: 20, 107, 69;
+
+  --color-navy: #17324D;             /* Deep Institutional Navy */
+  --color-navy-light: #22476C;
+  --color-navy-dark: #0E1F30;
+  --color-navy-50: #EFF4F9;
+  --color-navy-rgb: 23, 50, 77;
+
+  --color-gold: #D5A63C;             /* Warm Gold Accent */
+  --color-gold-light: #E2BC5C;
+  --color-gold-dark: #B08527;
+  --color-gold-50: #FBF6EA;
+  --color-gold-rgb: 213, 166, 60;
+
+  /* Neutrals & Surfaces */
+  --color-bg: #F5F7F8;               /* Clean modern institutional background */
+  --color-surface: #FFFFFF;          /* Pure white card/table surface */
+  --color-surface-hover: #F8FAFC;
+  --color-surface-elevated: #FFFFFF;
+
+  --color-text: #202B35;             /* High-contrast readable charcoal */
+  --color-text-secondary: #536271;   /* Muted secondary body */
+  --color-text-muted: #8493A2;       /* Tertiary text / captions */
+  --color-text-inverse: #FFFFFF;
+
+  --color-border: #E1E6EB;           /* Subtle crisp borders */
+  --color-border-light: #EEF2F5;
+  --color-border-dark: #CAD2D9;
+
+  /* Semantic Feedback Colors */
+  --color-success: #0D9F4F;
+  --color-success-bg: #E7F8EE;
+  --color-success-border: #A3E5BF;
+
+  --color-warning: #E08A00;
+  --color-warning-bg: #FFF7EB;
+  --color-warning-border: #FCD698;
+
+  --color-danger: #D83B3B;
+  --color-danger-bg: #FDECEC;
+  --color-danger-border: #F6ABAB;
+
+  --color-info: #1B78C2;
+  --color-info-bg: #ECF5FC;
+  --color-info-border: #99C8ED;
+
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-bengali: 'Noto Sans Bengali', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  --font-size-5xl: 3rem;      /* 48px */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.35;
+  --line-height-base: 1.55;
+  --line-height-relaxed: 1.7;
+
+  /* Spacing Scale */
+  --space-0-5: 0.125rem; /* 2px */
+  --space-1: 0.25rem;    /* 4px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-3: 0.75rem;    /* 12px */
+  --space-4: 1rem;       /* 16px */
+  --space-5: 1.25rem;    /* 20px */
+  --space-6: 1.5rem;     /* 24px */
+  --space-8: 2rem;       /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+
+  /* Border Radii */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 9999px;
+
+  /* Shadows (Institutional & Clean) */
+  --shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-sm: 0 1px 3px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.04);
+  --shadow-md: 0 4px 8px -2px rgba(16, 24, 40, 0.08), 0 2px 4px -2px rgba(16, 24, 40, 0.04);
+  --shadow-lg: 0 12px 16px -4px rgba(16, 24, 40, 0.08), 0 4px 6px -2px rgba(16, 24, 40, 0.03);
+  --shadow-xl: 0 20px 24px -4px rgba(16, 24, 40, 0.1), 0 8px 8px -4px rgba(16, 24, 40, 0.04);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout Dimensions */
+  --header-height: 72px;
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 76px;
+  --max-width: 1280px;
+
+  /* Z-Index Hierarchy */
+  --z-header: 1000;
+  --z-sidebar: 1050;
+  --z-dropdown: 1100;
+  --z-modal-backdrop: 1200;
+  --z-modal: 1250;
+  --z-toast: 1300;
+  --z-tooltip: 1400;
+}

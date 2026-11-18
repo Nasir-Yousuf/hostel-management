@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Room & Allocation | NIYD Hostel Student Portal</title>
+  
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/student.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- Top bar -->
+  <header class="student-navbar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; height: 68px;">
+      <a href="index.html" class="brand-logo" style="gap: var(--space-2);">
+        <div class="brand-emblem" style="width: 38px; height: 38px; font-size: 0.9rem;">NIYD</div>
+        <div>
+          <span style="font-weight: 700; color: var(--color-navy); font-size: 0.95rem;">Student Residential Portal</span>
+          <div style="font-size: 0.7rem; color: var(--color-text-secondary);" id="topStudentId">Loading...</div>
+        </div>
+      </a>
+
+      <div style="display: flex; align-items: center; gap: var(--space-4);">
+        <span style="font-size: var(--font-size-sm); font-weight: 600; color: var(--color-navy);" id="topStudentName">Student</span>
+        <button type="button" class="btn btn-outline btn-sm" onclick="Auth.logout()">Sign Out</button>
+      </div>
+    </div>
+
+    <!-- Navigation Menu Bar -->
+    <div style="background: #F8FAFC; border-top: 1px solid var(--color-border-light);">
+      <div class="container student-nav-menu">
+        <a href="index.html" class="student-nav-link">
+          <span>🏠</span> Dashboard
+        </a>
+        <a href="room.html" class="student-nav-link active">
+          <span>🛏️</span> My Room
+        </a>
+        <a href="fees.html" class="student-nav-link">
+          <span>💳</span> Fees & Invoices
+        </a>
+        <a href="maintenance.html" class="student-nav-link">
+          <span>🔧</span> Maintenance Requests
+        </a>
+        <a href="rules.html" class="student-nav-link">
+          <span>📜</span> Hostel Rules
+        </a>
+        <a href="announcements.html" class="student-nav-link">
+          <span>📢</span> Notices
+        </a>
+        <a href="contact.html" class="student-nav-link">
+          <span>📞</span> Contact Warden
+        </a>
+        <a href="profile.html" class="student-nav-link">
+          <span>👤</span> Profile
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: var(--space-8); padding-bottom: var(--space-12);">
+
+    <!-- Room Details Section -->
+    <div class="card" style="margin-bottom: var(--space-8);">
+      <div class="card-header">
+        <h2 class="card-title">My Room Information</h2>
+        <span class="badge badge-success">Allocated</span>
+      </div>
+      <div class="card-body" id="myRoomDetailsBody">
+        <span class="spinner"></span>
+      </div>
+    </div>
+
+    <!-- Roommates Roster Section -->
+    <div class="card" style="margin-bottom: var(--space-8);">
+      <div class="card-header">
+        <h3 class="card-title">My Roommates</h3>
+      </div>
+      <div class="table-responsive" style="border: none;">
+        <table class="table" id="roommatesTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Student ID</th>
+              <th>Assigned Bed</th>
+              <th>Department</th>
+              <th>Contact Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="5" style="text-align: center; padding: 2rem;"><span class="spinner"></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Room Change Request Form -->
+    <div class="card" style="max-width: 760px;">
+      <div class="card-header">
+        <h3 class="card-title">Submit Room Change Request</h3>
+      </div>
+      <form id="roomChangeForm">
+        <div class="card-body">
+          <div id="existingRequestAlert" style="display: none; background: var(--color-warning-bg); border: 1px solid var(--color-warning-border); padding: var(--space-4); border-radius: var(--radius-md); margin-bottom: var(--space-4); font-size: var(--font-size-sm); color: var(--color-warning);">
+            <strong>Notice:</strong> You currently have a pending room change request under Warden review.
+          </div>
+
+          <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--space-4);">
+            Room transfers are subject to bed availability and require valid institutional justification (medical grounds, academic alignment, or mutual consent).
+          </p>
+
+          <div class="form-group">
+            <label class="form-label">Reason for Requesting Change <span class="required">*</span></label>
+            <textarea id="changeReason" class="form-control" rows="4" placeholder="Please explain in detail why you are requesting a room or bed transfer..." required minlength="10"></textarea>
+            <span class="form-hint">Minimum 10 characters</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary" id="submitChangeBtn">Submit Room Change Request</button>
+        </div>
+      </form>
+    </div>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="../assets/js/i18n.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/student/room.js"></script>
+</body>
+</html>

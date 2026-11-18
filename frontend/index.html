@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIYD Hostel Management System | National Institute of Youth Development</title>
+  <meta name="description" content="Official Residential Management System for National Institute of Youth Development (NIYD), Savar, Dhaka, Bangladesh.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/homepage.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Institutional Bar -->
+  <aside class="top-bar" aria-label="Institutional Top Bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <span data-i18n="orgSub">Ministry of Youth and Sports, Govt. of Bangladesh</span>
+        <span style="opacity: 0.4;">|</span>
+        <span class="top-bar-contact">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span data-i18n="emergencyHelp">Emergency Hotline: 01700-000000</span>
+        </span>
+      </div>
+      <div class="top-bar-right">
+        <!-- Language Switcher -->
+        <div class="lang-switcher" role="group" aria-label="Language Switcher">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="bn">বাংলা</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <!-- NIYD Institutional Branding -->
+      <a href="index.html" class="brand-logo" aria-label="NIYD Hostel Management System Homepage">
+        <div class="brand-emblem" aria-hidden="true">
+          <span>NIYD</span>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title" data-i18n="orgName">National Institute of Youth Development</span>
+          <span class="brand-subtitle">Hostel Management System (HMS)</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="#home" class="nav-link active" data-i18n="navHome">Home</a>
+        <a href="#facilities" class="nav-link" data-i18n="navFacilities">Facilities</a>
+        <a href="#announcements" class="nav-link" data-i18n="navAnnouncements">Announcements</a>
+        <a href="#rules" class="nav-link" data-i18n="navRules">Rules & Guidelines</a>
+        <a href="#contact" class="nav-link" data-i18n="navContact">Contact</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <a href="login.html?role=student" class="btn btn-outline-primary btn-sm" id="header-student-login" data-i18n="navStudentPortal">Student Portal</a>
+        <a href="login.html?role=admin" class="btn btn-primary btn-sm" id="header-admin-login" data-i18n="navAdminLogin">Admin Login</a>
+        <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Architectural Photograph -->
+  <section class="hero-section" id="home">
+    <div class="hero-bg-wrapper">
+      <img src="assets/images/hostel-hero.jpg" alt="NIYD Residential Hostel Building Architecture" class="hero-bg-image">
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span data-i18n="heroTag">Official Residential Management System</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span data-i18n="heroHeadline">A Better Living Experience for a Better Future.</span>
+        </h1>
+
+        <p class="hero-subtitle" data-i18n="heroSubheadline">
+          An organized, secure, and supportive residential environment for the next generation of leaders.
+        </p>
+
+        <div class="hero-actions">
+          <a href="login.html?role=student" class="btn btn-gold btn-lg" id="hero-login-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+            <span data-i18n="btnStudentLogin">Student Portal Login</span>
+          </a>
+
+          <a href="login.html?role=admin" class="btn btn-outline btn-lg" style="color: #FFFFFF; border-color: rgba(255,255,255,0.4);" id="hero-admin-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span data-i18n="btnAdminEntry">Warden & Staff Entry</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats Ribbon -->
+  <section class="stats-ribbon" aria-label="Hostel Statistics Overview">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-num">450+</span>
+          <span class="stat-desc" data-i18n="statCapacity">Total Capacity</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">2</span>
+          <span class="stat-desc" data-i18n="statBuildings">Hostel Blocks</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">24/7</span>
+          <span class="stat-desc" data-i18n="statSecurity">Security & Safety</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">100%</span>
+          <span class="stat-desc" data-i18n="statConnectivity">Campus Wi-Fi</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facilities Section -->
+  <section class="py-section bg-surface" id="facilities">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="facilitiesTag">Campus Living</span>
+        <h2 class="section-title" data-i18n="facilitiesTitle">World-Class Hostel Amenities</h2>
+        <p class="section-subtitle" data-i18n="facilitiesSub">
+          Designed to cultivate personal development, focused study, and a vibrant community life.
+        </p>
+      </div>
+
+      <div class="facilities-grid">
+        <!-- 1. Security -->
+        <div class="facility-card">
+          <div class="facility-icon-box" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <h3 class="facility-title" data-i18n="facilitySecurityTitle">24/7 Safety & Security</h3>
+          <p class="facility-desc" data-i18n="facilitySecurityDesc">
+            Biometric and smart-card entry system, round-the-clock security personnel, and CCTV surveillance.
+          </p>
+        </div>
+
+        <!-- 2. Wi-Fi -->
+        <div class="facility-card">
+          <div class="facility-icon-box" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+          </div>
+          <h3 class="facility-title" data-i18n="facilityWifiTitle">High-Speed Wi-Fi</h3>
+          <p class="facility-desc" data-i18n="facilityWifiDesc">
+            Dedicated gigabit fiber connectivity throughout all residential wings, study halls, and dining facilities.
+          </p>
+        </div>
+
+        <!-- 3. Study Rooms -->
+        <div class="facility-card">
+          <div class="facility-icon-box" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          </div>
+          <h3 class="facility-title" data-i18n="facilityStudyTitle">Dedicated Study Rooms</h3>
+          <p class="facility-desc" data-i18n="facilityStudyDesc">
+            Sound-dampened quiet study lounges on every floor equipped with ergonomic furniture and power outlets.
+          </p>
+        </div>
+
+        <!-- 4. Dining Hall -->
+        <div class="facility-card">
+          <div class="facility-icon-box" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+          </div>
+          <h3 class="facility-title" data-i18n="facilityDiningTitle">Hygienic Dining Hall</h3>
+          <p class="facility-desc" data-i18n="facilityDiningDesc">
+            Nutritious meal plans prepared in certified sanitary kitchen environments under regular student oversight.
+          </p>
+        </div>
+
+        <!-- 5. Medical Clinic -->
+        <div class="facility-card">
+          <div class="facility-icon-box" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+          </div>
+          <h3 class="facility-title" data-i18n="facilityMedicalTitle">Medical & First Aid</h3>
+          <p class="facility-desc" data-i18n="facilityMedicalDesc">
+            On-campus first-aid clinic with on-call physician and 24/7 transport support for urgent care.
+          </p>
+        </div>
+
+        <!-- 6. Power Backup -->
+        <div class="facility-card">
+          <div class="facility-icon-box" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <h3 class="facility-title" data-i18n="facilityPowerTitle">Uninterrupted Power</h3>
+          <p class="facility-desc" data-i18n="facilityPowerDesc">
+            Heavy-duty automatic diesel generators ensuring uninterrupted electricity and study comfort at all times.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Official Announcements Section -->
+  <section class="py-section" id="announcements">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="announcementsTag">Notice Board</span>
+        <h2 class="section-title" data-i18n="announcementsTitle">Official Announcements</h2>
+        <p class="section-subtitle" data-i18n="announcementsSub">
+          Important updates, fee schedules, hostel schedules, and guidelines.
+        </p>
+      </div>
+
+      <div class="announcements-grid" id="announcements-container">
+        <!-- Rendered dynamically by homepage.js -->
+        <div style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
+          <span class="spinner"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hostel Rules Section -->
+  <section class="py-section bg-surface" id="rules">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Residential Guidelines</span>
+        <h2 class="section-title" data-i18n="navRules">Rules & Guidelines</h2>
+        <p class="section-subtitle">
+          To maintain discipline and mutual respect, all hostel residents must abide by these institutional guidelines.
+        </p>
+      </div>
+
+      <div style="max-width: 840px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-4);">
+        <div class="card" style="padding: var(--space-5);">
+          <h4 style="color: var(--color-navy); margin-bottom: var(--space-2); display: flex; align-items: center; gap: var(--space-2);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            Entry & Exit Timings
+          </h4>
+          <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin: 0;">
+            Hostel gates open at 6:00 AM and close strictly at 9:30 PM. Any late arrivals must be recorded in the late register with prior assistant warden approval.
+          </p>
+        </div>
+
+        <div class="card" style="padding: var(--space-5);">
+          <h4 style="color: var(--color-navy); margin-bottom: var(--space-2); display: flex; align-items: center; gap: var(--space-2);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            Visitor Policy
+          </h4>
+          <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin: 0;">
+            External visitors and guardians may only meet residents in the designated ground floor visitor lounge between 4:00 PM and 7:00 PM. No unauthorized guests are allowed inside resident rooms.
+          </p>
+        </div>
+
+        <div class="card" style="padding: var(--space-5);">
+          <h4 style="color: var(--color-navy); margin-bottom: var(--space-2); display: flex; align-items: center; gap: var(--space-2);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            Safety, Discipline & Prohibited Items
+          </h4>
+          <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin: 0;">
+            Smoking, narcotics, firearms, and high-wattage unapproved electric appliances (heaters/hotplates) are strictly prohibited and result in immediate disciplinary suspension.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admission Callout Banner -->
+  <section class="container" style="margin-top: var(--space-8); margin-bottom: var(--space-12);">
+    <div class="admission-banner">
+      <div class="admission-info">
+        <h3 data-i18n="admissionBannerTitle">Hostel Admissions Open for 2026 Session</h3>
+        <p data-i18n="admissionBannerDesc">
+          Eligible students of NIYD diploma and executive programs can apply online for hostel allocation.
+        </p>
+      </div>
+      <div>
+        <a href="login.html?tab=apply" class="btn btn-gold btn-lg" style="white-space: nowrap;" data-i18n="btnApplyNow">
+          Submit Application Online
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-section" id="contact" style="background-color: #EDF1F5;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="contactTag">Get In Touch</span>
+        <h2 class="section-title" data-i18n="contactTitle">Hostel Administration & Office</h2>
+        <p class="section-subtitle" data-i18n="contactSub">
+          Our administrative staff and resident wardens are here to assist with any residence-related inquiries.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <h4 data-i18n="wardenOfficeTitle">Chief Warden Office</h4>
+          <p data-i18n="wardenOfficeDesc">Block A, Ground Floor, NIYD Campus, Savar, Dhaka</p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <h4 data-i18n="wardenHoursTitle">Office Hours</h4>
+          <p data-i18n="wardenHoursDesc">Sunday – Thursday: 9:00 AM – 5:00 PM</p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </div>
+          <h4 data-i18n="wardenEmailTitle">Official Correspondence</h4>
+          <p data-i18n="wardenEmailDesc">warden@niyd.gov.bd / hostel@niyd.gov.bd</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Institutional Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: About -->
+        <div class="footer-col">
+          <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
+            <div class="brand-emblem" style="width: 38px; height: 38px; font-size: 0.95rem;">NIYD</div>
+            <div>
+              <div style="color: #FFFFFF; font-weight: var(--font-weight-bold); font-size: 1rem;" data-i18n="orgName">National Institute of Youth Development</div>
+              <div style="font-size: 0.72rem; color: #B5C4D3;" data-i18n="orgSub">Ministry of Youth and Sports</div>
+            </div>
+          </div>
+          <p style="font-size: var(--font-size-sm); color: #B5C4D3; line-height: 1.6;" data-i18n="footerDesc">
+            The premier national institute for leadership development, technical skills, and residential student empowerment in Bangladesh.
+          </p>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h4 data-i18n="footerQuickLinks">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#facilities" data-i18n="navFacilities">Facilities</a></li>
+            <li><a href="#announcements" data-i18n="navAnnouncements">Announcements</a></li>
+            <li><a href="#rules" data-i18n="navRules">Rules & Guidelines</a></li>
+            <li><a href="#contact" data-i18n="navContact">Contact Office</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Portals -->
+        <div class="footer-col">
+          <h4 data-i18n="footerPortals">System Portals</h4>
+          <ul class="footer-links">
+            <li><a href="login.html?role=student" data-i18n="navStudentPortal">Student Portal</a></li>
+            <li><a href="login.html?role=admin" data-i18n="navAdminLogin">Hostel Warden Login</a></li>
+            <li><a href="login.html?role=staff" data-i18n="navStaffPortal">Maintenance Staff Portal</a></li>
+            <li><a href="login.html?tab=apply" data-i18n="btnApplyAdmission">Apply for Admission</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Institutional Address -->
+        <div class="footer-col">
+          <h4>Hostel Location</h4>
+          <p style="font-size: var(--font-size-sm); color: #B5C4D3; line-height: 1.6;">
+            National Institute of Youth Development (NIYD)<br>
+            Savar, Dhaka-1340, Bangladesh.<br>
+            Phone: +880-2-7744001<br>
+            Web: <a href="https://niyd.gov.bd" target="_blank" rel="noopener" style="color: var(--color-gold-light);">www.niyd.gov.bd</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span data-i18n="footerCopyright">© 2026 National Institute of Youth Development (NIYD). All rights reserved.</span>
+        <span data-i18n="footerGovt">Government of the People's Republic of Bangladesh</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/homepage.js"></script>
+</body>
+</html>
