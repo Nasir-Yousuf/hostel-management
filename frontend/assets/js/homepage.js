@@ -90,15 +90,11 @@ async function loadAnnouncements() {
   if (!container) return;
 
   try {
-    const response = await fetch(`${CONFIG.API_BASE_URL}/announcements?limit=3&isPublished=true`).catch(() => null);
-    
-    if (response && response.ok) {
-      const data = await response.json();
-      const items = data.announcements || data.data || [];
-      if (items.length > 0) {
-        renderAnnouncements(items, container);
-        return;
-      }
+    const res = await API.get('/announcements', { limit: 3, isPublished: true });
+    const items = res.announcements || res.data || [];
+    if (items.length > 0) {
+      renderAnnouncements(items, container);
+      return;
     }
   } catch (err) {
     console.log('[Notice] Backend not yet connected for announcements, showing fallback.');
