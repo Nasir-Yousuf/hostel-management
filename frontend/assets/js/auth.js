@@ -114,6 +114,21 @@ const Auth = {
     }
   },
 
+  // Helper to resolve paths whether hosted via http:// (server) or direct file://
+  resolveAppPath(targetPath) {
+    // If targetPath is like '/frontend/admin/index.html'
+    if (window.location.protocol === 'file:') {
+      // Find where 'frontend/' appears in current pathname
+      const currentPath = window.location.pathname.replace(/\\/g, '/');
+      const frontendIdx = currentPath.toLowerCase().indexOf('/frontend/');
+      if (frontendIdx !== -1) {
+        const rootPath = currentPath.substring(0, frontendIdx);
+        return rootPath + targetPath;
+      }
+    }
+    return targetPath;
+  },
+
   // Logout Method
   async logout() {
     try {
@@ -125,7 +140,7 @@ const Auth = {
       localStorage.removeItem(CONFIG.STORAGE_KEYS.REFRESH_TOKEN);
       this.setUser(null);
       // Redirect to homepage or login
-      window.location.href = '/frontend/login.html';
+      window.location.href = this.resolveAppPath('/frontend/login.html');
     }
   },
 
@@ -133,21 +148,21 @@ const Auth = {
   redirectToDashboard(role) {
     const userRole = role || this.getRole();
     if (userRole === CONFIG.ROLES.ADMIN) {
-      window.location.href = '/frontend/admin/index.html';
+      window.location.href = this.resolveAppPath('/frontend/admin/index.html');
     } else if (userRole === CONFIG.ROLES.STUDENT) {
-      window.location.href = '/frontend/student/index.html';
+      window.location.href = this.resolveAppPath('/frontend/student/index.html');
     } else if (userRole === CONFIG.ROLES.STAFF) {
-      window.location.href = '/frontend/staff/index.html';
+      window.location.href = this.resolveAppPath('/frontend/staff/index.html');
     } else {
-      window.location.href = '/frontend/index.html';
+      window.location.href = this.resolveAppPath('/frontend/index.html');
     }
   },
 
   // Client-side Route Guard for Portals
   requireAuth(allowedRoles = []) {
     if (!this.isAuthenticated()) {
-      const returnUrl = encodeURIComponent(window.location.pathname + window.location.search);
-      window.location.href = `/frontend/login.html?returnUrl=${returnUrl}`;
+      const returnUrl = encodeURIComponent(window.location.href);
+      window.location.href = this.resolveAppPath(`/frontend/login.html?returnUrl=${returnUrl}`);
       return false;
     }
 
