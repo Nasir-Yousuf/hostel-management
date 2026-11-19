@@ -20,6 +20,27 @@ const API = {
 
   // Generic Request Handler
   async request(endpoint, options = {}) {
+    // If MockDB is loaded, seamlessly intercept and serve simulated mock responses
+    // allowing full interaction on static hosts like Vercel without a live backend!
+    if (window.MockDB && typeof window.MockDB.handleRequest === 'function') {
+      try {
+        let bodyData = null;
+        if (options.body) {
+          try {
+            bodyData = typeof options.body === 'string' ? JSON.parse(options.body) : options.body;
+          } catch {
+            bodyData = options.body;
+          }
+        }
+        const mockResult = window.MockDB.handleRequest(endpoint, options.method || 'GET', bodyData);
+        if (mockResult !== undefined) {
+          return mockResult;
+        }
+      } catch (mockErr) {
+        console.warn('[MockDB Handler Warn]', mockErr);
+      }
+    }
+
     const url = endpoint.startsWith('http') ? endpoint : `${CONFIG.API_BASE_URL}${endpoint}`;
     const token = this.getToken();
 
